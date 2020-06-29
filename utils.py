@@ -49,10 +49,10 @@ def preprocess(sents, dir=None, verbose=200000):
 
 
 def process(dir, limit_per_file=2**30):
-    if not os.path.isdir('corpus'):
-        os.mkdir("corpus")
-    if not os.path.isdir('corpus/train'):
-        os.mkdir("corpus/train")
+    if not os.path.isdir('/mnt/disk1/tan_hm/corpus'):
+        os.mkdir("/mnt/disk1/tan_hm/corpus")
+    if not os.path.isdir('/mnt/disk1/tan_hm/corpus/train'):
+        os.mkdir("/mnt/disk1/tan_hm/corpus/train")
 
     with codecs.open(dir, 'r', encoding='utf-8', errors='ignore') as f:
         counter = 0
@@ -63,20 +63,20 @@ def process(dir, limit_per_file=2**30):
 
             sents = text.split('\n')
 
-            preprocess(sents, "corpus/train/train_split_" + str(counter))
+            preprocess(sents, "/mnt/disk1/tan_hm/corpus/train/train_split_" + str(counter))
             counter += 1
 
-    with codecs.open("corpus/train/train_split_0", 'r', encoding='utf-8',
+    with codecs.open("/mnt/disk1/tan_hm/corpus/train/train_split_0", 'r', encoding='utf-8',
                      errors='ignore') as f:
         text = f.read()
         sents = text
         test_size = int(0.7 * len(sents))
 
-    with codecs.open("corpus/test.txt", 'w+', encoding='utf-8',
+    with codecs.open("/mnt/disk1/tan_hm/corpus/test.txt", 'w+', encoding='utf-8',
                      errors='ignore') as f:
         f.write(sents[:test_size])
 
-    with codecs.open("corpus/valid.txt", 'w+', encoding='utf-8',
+    with codecs.open("/mnt/disk1/tan_hm/corpus/valid.txt", 'w+', encoding='utf-8',
                      errors='ignore') as f:
         f.write(sents[test_size:])
 

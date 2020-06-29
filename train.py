@@ -11,7 +11,7 @@ for i in vn_char:
     dictionary.add_item(i)
 
 # get your corpus, process forward and at the character level
-corpus = TextCorpus('/content/drive/My Drive/aimesoft_training/Flair/corpus',
+corpus = TextCorpus('../corpus',
                     dictionary,
                     is_forward_lm,
                     character_level=True)
