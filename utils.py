@@ -62,7 +62,6 @@ def process(dir, limit_per_file=2**30):
                 break
 
             sents = text.split('\n')
-            length = len(sents)
 
             preprocess(sents, "corpus/train/train_split_" + str(counter))
             counter += 1
@@ -77,7 +76,7 @@ def process(dir, limit_per_file=2**30):
                      errors='ignore') as f:
         f.write(sents[:test_size])
 
-    with codecs.open("corpus/test.txt", 'w+', encoding='utf-8',
+    with codecs.open("corpus/valid.txt", 'w+', encoding='utf-8',
                      errors='ignore') as f:
         f.write(sents[test_size:])
 
