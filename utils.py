@@ -57,7 +57,7 @@ def process(dir, limit_per_file=2**30):
     with codecs.open(dir, 'r', encoding='utf-8', errors='ignore') as f:
         counter = 0
         while True:
-            text = f.readline(limit_per_file)
+            text = f.read(limit_per_file)
             if len(text) == 0:
                 break
 
