@@ -2,6 +2,7 @@ from flair.data import Dictionary
 from flair.models import LanguageModel
 from flair.trainers.language_model_trainer import LanguageModelTrainer, TextCorpus
 from utils import vn_char, punct
+import torch
 import pickle
 import os
 
@@ -33,7 +34,7 @@ language_model = LanguageModel(dictionary,
                                hidden_size=2048,
                                nlayers=1)
 # train your language model
-trainer = LanguageModelTrainer(language_model, corpus)
+trainer = LanguageModelTrainer(language_model, corpus, optimizer=torch.optim.AdamW)
 
 trainer.train('/mnt/disk1/tan_hm/Flair_language_model_' + suffix,
               sequence_length=224,
