@@ -32,16 +32,16 @@ else:
 language_model = LanguageModel(dictionary,
                                is_forward_lm,
                                hidden_size=2048,
-                               nlayers=2)
+                               nlayers=1)
 
 trainer = LanguageModelTrainer(language_model, corpus)
 
 
 trainer.train('/mnt/disk1/tan_hm/Flair_language_model_' + suffix,
               sequence_length=256,
-              mini_batch_size=128,
+              mini_batch_size=200,
               max_epochs=100,
-              learning_rate=20,
+              learning_rate=5,
               clip=0.5,
               patience=10,
               checkpoint=True,
