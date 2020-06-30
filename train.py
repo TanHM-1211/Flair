@@ -2,8 +2,9 @@ from flair.data import Dictionary
 from flair.models import LanguageModel
 from flair.trainers.language_model_trainer import LanguageModelTrainer, TextCorpus
 from utils import vn_char, punct
+
 # are you training a forward or backward LM?
-is_forward_lm = False
+is_forward_lm = True
 suffix = 'forward' if is_forward_lm else 'backward'
 
 # load the character dictionary
@@ -27,12 +28,12 @@ language_model = LanguageModel(dictionary,
 trainer = LanguageModelTrainer(language_model, corpus)
 
 trainer.train('/mnt/disk1/tan_hm/Flair_language_model_' + suffix,
-              sequence_length=256,
+              sequence_length=224,
               mini_batch_size=100,
               max_epochs=100,
               learning_rate=20,
               patience=10,
               checkpoint=True,
-              num_workers=8)
+              num_workers=4)
 
 
