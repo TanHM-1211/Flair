@@ -32,22 +32,17 @@ else:
 language_model = LanguageModel(dictionary,
                                is_forward_lm,
                                hidden_size=2048,
-                               nlayers=1)
-if os.path.isfile('/mnt/disk1/tan_hm/flair_trainer.pkl'):
-    with open('/mnt/disk1/tan_hm/flair_trainer.pkl', 'rb') as f:
-        trainer = pickle.load(f)
-else:
-    trainer = LanguageModelTrainer(language_model, corpus, optimizer=torch.optim.AdamW)
+                               nlayers=2)
 
-    with open('/mnt/disk1/tan_hm/flair_trainer.pkl', 'wb') as f:
-        pickle.dump(trainer, f, protocol=pickle.HIGHEST_PROTOCOL)
+trainer = LanguageModelTrainer(language_model, corpus)
 
 
 trainer.train('/mnt/disk1/tan_hm/Flair_language_model_' + suffix,
-              sequence_length=224,
-              mini_batch_size=100,
+              sequence_length=256,
+              mini_batch_size=128,
               max_epochs=100,
               learning_rate=20,
+              clip=0.5,
               patience=10,
               checkpoint=True,
               num_workers=4)
