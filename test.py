@@ -3,7 +3,7 @@ import os
 import sys
 
 size = int(sys.argv[1])
-dir = os.listdir('/mnt/disk1/tan_hm/corpus/train')
+dir = '/mnt/disk1/tan_hm/corpus/train'
 files = [os.path.join(dir, i) for i in os.listdir(dir)]
 
 counter = 0
