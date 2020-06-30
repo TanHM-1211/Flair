@@ -25,7 +25,7 @@ else:
                         character_level=True)
 
     with open('/mnt/disk1/tan_hm/saved_corpus.pkl', 'wb') as f:
-        pickle.dump(corpus, f, protocol=4)
+        pickle.dump(corpus, f, protocol=pickle.HIGHEST_PROTOCOL)
 
 # instantiate your language model, set hidden size and number of layers
 language_model = LanguageModel(dictionary,
